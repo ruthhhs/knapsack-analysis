@@ -1,12 +1,12 @@
 import time
-from dp import knapsack_dp
-from greedy_by_density import greedy_by_density
-from greedy_by_value import greedy_by_value
-from greedy_by_weight import greedy_by_weight
+from algorithms.dp import knapsack_dp
+from algorithms.greedy_by_density import greedy_by_density
+from algorithms.greedy_by_value import greedy_by_value
+from algorithms.greedy_by_weight import greedy_by_weight
 
 if __name__ == "__main__":
     # Baca data dari file
-    with open("./datasets/dataset1.txt", "r") as f:
+    with open("./datasets/dataset7.txt", "r") as f:
         C, n = map(int, f.readline().split())
         v = list(map(int, f.readline().split()))
         w = list(map(int, f.readline().split()))
