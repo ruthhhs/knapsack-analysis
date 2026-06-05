@@ -3,10 +3,11 @@ from algorithms.dp import knapsack_dp
 from algorithms.greedy_by_density import greedy_by_density
 from algorithms.greedy_by_value import greedy_by_value
 from algorithms.greedy_by_weight import greedy_by_weight
+from algorithms.ga import knapsack_ga
 
 if __name__ == "__main__":
     # Baca data dari file
-    with open("./datasets/dataset7.txt", "r") as f:
+    with open("./datasets/dataset7.txt", "r") as f:     # ubah dataset di sini
         C, n = map(int, f.readline().split())
         v = list(map(int, f.readline().split()))
         w = list(map(int, f.readline().split()))
@@ -29,12 +30,13 @@ if __name__ == "__main__":
     greedy_time = time.perf_counter() - start
 
     start = time.perf_counter()
-    # ga_result = knapsack_ga(C, v, w)
-    # ga_time = time.perf_counter() - start
+    ga_result = knapsack_ga(C, n, v, w)
+    ga_time = time.perf_counter() - start
 
     # Tampilkan hasil dan waktu eksekusi
+    print("=== Perbandingan Algoritma Knapsack ===")
     print(f"Dynamic Programing  : {dp_result} ({dp_time*1000:.3f} ms)")
     print(f"Greedy by Density   : {greedy_result1} ({greedy_time*1000:.3f} ms)")
     print(f"Greedy by Value     : {greedy_result2} ({greedy_time*1000:.3f} ms)")
     print(f"Greedy by Weight    : {greedy_result3} ({greedy_time*1000:.3f} ms)")
-    # print(f"GA     : {ga_result} ({ga_time*1000:.3f} ms)")
+    print(f"Genetic Algorithm   : {ga_result} ({ga_time*1000:.3f} ms)")
