@@ -51,13 +51,27 @@ def mutasi(kromosom):
 
     return kromosom
 
-def knapsack_ga(C, n, v, w):
+def decode_kromosom(kromosom, merch, v, w):
+    total_weight = 0
+    total_value = 0
+    items = []
+
+    for i, gene in enumerate(kromosom):
+        if gene:
+            total_weight += w[i]
+            total_value += v[i]
+            items.append(merch[i])
+
+    return total_value, total_weight, items
+
+def knapsack_ga(C, n, merch, v, w):
     pop = max(10, n)
     generasi = 100
     populasi = bangkitkan_populasi(pop, n)
 
     total_value = -1
     total_weight = -1
+    merch_dipilih = []
 
     for _ in range(generasi):
         populasi_baru = []
@@ -81,5 +95,10 @@ def knapsack_ga(C, n, v, w):
             if nilai > total_value:
                 total_value = nilai
                 total_weight = sum(w[i] for i in range(len(kromosom)) if kromosom[i] == 1)
+                merch_dipilih = [merch[i] for i in range(len(kromosom)) if kromosom[i] == 1]
     
-    return total_value, total_weight
+    if not merch_dipilih:
+        print("Tidak ada merchandise yang dapat dibeli.")
+        return
+    
+    return total_value, total_weight, merch_dipilih

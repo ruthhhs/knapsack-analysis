@@ -1,6 +1,6 @@
 import heapq
 
-def greedy_by_value(C, n, v, w):
+def greedy_by_value(C, n, merch, v, w):
     # Max-heap berdasarkan value
     heap = []
 
@@ -9,7 +9,7 @@ def greedy_by_value(C, n, v, w):
 
     total_value = 0
     total_weight = 0
-    selected = []
+    merch_dipilih = []
 
     while heap:
         value, idx = heapq.heappop(heap)
@@ -17,9 +17,12 @@ def greedy_by_value(C, n, v, w):
         if total_weight + w[idx] <= C:
             total_weight += w[idx]
             total_value += v[idx]
-            selected.append(idx)
+            merch_dipilih.append(merch[idx])
 
-    if not selected:
-        return -1, -1
+    merch_dipilih.reverse()
 
-    return total_value, total_weight
+    if not merch_dipilih:
+        print("Tidak ada merchandise yang dapat dibeli.")
+        return
+    
+    return total_value, total_weight, merch_dipilih
