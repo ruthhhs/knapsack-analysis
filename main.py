@@ -7,7 +7,7 @@ from algorithms.ga import knapsack_ga
 
 if __name__ == "__main__":
     # Baca data dari file
-    with open("./datasets/dataset1.txt", "r") as f:     # ubah dataset di sini
+    with open("./datasets/dataset7.txt", "r") as f:     # ubah dataset di sini
         C, n = map(int, f.readline().split())
         merch = f.readline().split("|")
         v = list(map(int, f.readline().split()))

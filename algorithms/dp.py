@@ -16,10 +16,6 @@ def knapsack_dp(C, n, merch, v, w):
 
     best_value = dp[n][C]
 
-    # Tidak ada item yang dipilih
-    if best_value == 0:
-        return -1, -1
-
     # Backtracking
     total_weight = 0
     merch_dipilih = []
